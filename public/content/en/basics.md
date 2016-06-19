@@ -496,8 +496,8 @@ void main() {
 # Arrays
 
 The are two types of Arrays in D: **static** and **dynamic**
-arrays. Access to arrays of any kind are always bounds checked;
-a failed range check yields a `RangeError` which aborts the application. The brave
+arrays. Accesses to arrays of any kind are always bounds-checked;
+a failed range check yields a `RangeError`, which aborts the application. The brave
 can disable this with the compiler flag `-boundschecks=off` to squeeze
 the last cycles out of their binary.
 
@@ -517,32 +517,32 @@ and its length:
     int size = 8; // run-time variable
     auto arr = new int[size];
 
-The type of `arr` is `int[]` which is technically a
+The type of `arr` is `int[]`, which is technically a
 **slice** - those are introduced in the next section. Multi-dimensional
 arrays can be created easily using the `auto arr = new int[3][3]` syntax.
 
-Arrays can be concatenated using the `~` operator which
+Arrays can be concatenated using the `~` operator, which
 will create a new dynamic array. Mathematical operations can
 be applied to whole arrays using the `c[] = a[] + b[]` syntax.
 Those operations might be optimized
-by the compiler to use special processors instructions that
+by the compiler to use special processor instructions that
 do the operations in one go.
 
-Both static and dynamic array provide the property `.length`
-which is read-only for static arrays but can be written to
-in case of dynamic arrays to change its size dynamically. The
+Both static and dynamic array provide the property `.length`,
+which is read-only for a static array but can be written to
+in case of a dynamic array to change its size dynamically. The
 property `.dup` creates a copy of the array.
 
-When indexing an array through the `arr[idx]` syntax the special
-`$` syntax denotes an array's length. `arr[$ - 1]` thus
-references the last element and is a short form for `arr[arr.length - 1]`.
+In an array index,
+`$` denotes an array's length. `arr[$ - 1]` thus
+references the last element and is short for `arr[arr.length - 1]`.
 
 ### Exercise
 
 Complete the function `encrypt` to decrypt the secret message.
-The text should be encrypted using *Caesar encryption*
-that shifts the characters in the alphabet using a certain index.
-The to-be-encrypted text just contains characters in the range `a-z`
+The text should be encrypted using *Caesar encryption*,
+which shifts the characters in the alphabet using a certain index.
+The to-be-encrypted text contains only characters in the range `a-z`,
 which should make things easier.
 
 ## {SourceCode}
